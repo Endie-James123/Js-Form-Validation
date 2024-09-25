@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form Validation</title>
+    <style>
+        .error-message {
+            color: red;
+            font-size: 12px;
+        }
+        .input-field {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="myForm">
+        <!-- input validation for name field -->
+        <div class="input-field">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <div class="error-message" id="nameError"></div>
+        </div>
+
+        <!-- input Validation for email field -->
+        <div class="input-field">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <div class="error-message" id="emailError"></div>
+        </div>
+
+        <!-- input Validation for password field -->
+        <div class="input-field">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <div class="error-message" id="passwordError"></div>
+        </div>
+
+        <!-- submit button -->
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("myForm").onsubmit = function(event) {
+            event.preventDefault(); // Stop default form submission
+            var valid = true;
+
+            // Check the Name field
+            var name = document.getElementById("name").value;
+            if (name === "") {
+                document.getElementById("nameError").textContent = "Name is required";
+                valid = false;
+            } else {
+                document.getElementById("nameError").textContent = "";
+            }
+
+            // Check the Email field
+            var email = document.getElementById("email").value;
+            if (email === "") {
+                document.getElementById("emailError").textContent = "Email is required";
+                valid = false;
+            } else {
+                document.getElementById("emailError").textContent = "";
+            }
+
+            // Check the Password field
+            var password = document.getElementById("password").value;
+            if (password === "") {
+                document.getElementById("passwordError").textContent = "Password is required";
+                valid = false;
+            } else {
+                document.getElementById("passwordError").textContent = "";
+            }
+
+            // Submit form if all fields are valid
+            if (valid) {
+                alert("Form is valid and ready for submission!");
+            }
+        }
+    </script>
+
+</body>
+</html>
