@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea Validation</title>
+    <style>
+        .error-message {
+            color: red;
+            font-size: 12px;
+        }
+        .input-field {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="input-field">
+        <label for="description">Description (Max 100 characters):</label>
+        <textarea id="description" name="description"></textarea>
+        <div class="error-message" id="descriptionError"></div>
+    </div>
+
+    <script>
+        // Function to handle the real-time validation
+        document.getElementById("description").addEventListener("input", function() {
+            var description = this.value;
+            var errorElement = document.getElementById("descriptionError");
+
+            if (description.length > 100) {
+                errorElement.innerText = "Description must be less than 100 characters";
+            } else {
+                errorElement.innerText = ""; // Clear error when under 100 characters
+            }
+        });
+    </script>
+
+</body>
+</html>

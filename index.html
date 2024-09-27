@@ -38,6 +38,13 @@
             <div class="error-message" id="passwordError"></div>
         </div>
 
+        <!-- Input Validation for textarea field -->
+        <div class="input-field">
+            <label for="description">Description (Max 100 characters):</label>
+            <textarea id="description" name="description" required></textarea>
+            <div class="error-message" id="descriptionError"></div>
+        </div>
+
         <!-- submit button -->
         <button type="submit">Submit</button>
     </form>
@@ -73,12 +80,23 @@
             } else {
                 document.getElementById("passwordError").textContent = "";
             }
-
-            // Submit form if all fields are valid
-            if (valid) {
-                alert("Form is valid and ready for submission!");
-            }
+        // Submit form if all fields are valid
+        if (valid) {
+            alert("Form is valid and ready for submission!");
         }
+    }
+
+        // Input event listener for textarea to provide real-time validation
+        document.getElementById("description").addEventListener("input", function() {
+            var description = this.value;
+            var errorElement = document.getElementById("descriptionError");
+
+            if (description.length > 100) {
+                errorElement.innerText = "Description must be less than 100 characters";
+            } else {
+                errorElement.innerText = ""; // Clear error when under 100 characters
+            }
+        });
     </script>
 
 </body>
